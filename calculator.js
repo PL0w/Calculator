@@ -19,7 +19,7 @@ inputArea.addEventListener('click', (e) => {
 })
 
 function getNumbers(targ){
-    if (targ.matches('.number') && targ.matches.textContent != '0'){
+    if (targ.matches('.number')){
         console.log('number');
         let num = target.textContent;
         console.log(`number is ${num}`);
@@ -28,8 +28,12 @@ function getNumbers(targ){
 }
 
 function addNumbersToNumber(num){
-    if (number == 0){number = num;}
-    if (number != 0){ number += num;}
+    if (number == 0)
+    {
+        number = num;
+    } else {
+        number += num;
+    }
 }
 
 function doPlus(targ){
