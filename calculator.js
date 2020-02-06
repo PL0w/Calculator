@@ -1,11 +1,12 @@
 let inputArea = document.querySelector('.calculator-input-area');
 let textField = document.querySelector('.calculator-text-field');
+let textFieldHistory = document.querySelector('.text-field-history');
 let number = 0;
 let number2 = 0;
 let total = 0;
 let sum;
 
-textField.textContent = 0;
+// textField.textContent = 0;
 
 inputArea.addEventListener('click', (e) => {
     target = event.target;
@@ -49,6 +50,7 @@ function convertNumber(){
 
 function doPlus(targ){
     if (target.matches('.plus')){
+        let numHistory = number;
         console.log('plus');
         console.log(number);
         if (number > 0)
@@ -59,16 +61,12 @@ function doPlus(targ){
         }
         clearTextField();
         updateTextField();
+        updateTextFieldHistory(numHistory);
     }
 }
 
 function addNumber(num){
     number += num;
-}
-
-function numberToTextField(){
-    clearTextField();
-    textField.textContent = number;
 }
 
 function addTotal(num){
@@ -81,12 +79,15 @@ function addTotal(num){
 
 function updateTextField() {
     if (number2 > 0){
-        textField.textContent = number2;
+        textField.childNodes[0].textContent = number2;
     }else{
-        textField.textContent = number;
+        textField.childNodes[0].textContent = number;
     }
+}
+function updateTextFieldHistory(num){
+    textFieldHistory.textContent = num;
 }
 
 function clearTextField() {
-    textField.textContent = '';
+    textField.childNodes[0].textContent = '';
 }

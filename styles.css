@@ -27,6 +27,8 @@ body {
 } */
 
 .calculator-text-field{
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     height: 30px;
     border: 2px solid white;
@@ -35,6 +37,7 @@ body {
 
     margin-bottom: 10px;
 }
+
 
 .calculator-input-area {
     display: flex;
