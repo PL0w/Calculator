@@ -78,14 +78,21 @@ function addTotal(num){
 }
 
 function updateTextField() {
-    if (number2 > 0){
-        textField.childNodes[0].textContent = number2;
-    }else{
-        textField.childNodes[0].textContent = number;
-    }
+    // if (number2 > 0){
+    //     textField.childNodes[0].textContent = number2;
+    // }else{
+    //     textField.childNodes[0].textContent = number;
+    // }
+    textField.childNodes[0].textContent = number;
 }
 function updateTextFieldHistory(num){
-    textFieldHistory.textContent = num;
+    if (textFieldHistory.textContent == 0){
+        textFieldHistory.textContent = num;
+    }else {
+        let x = Number(textFieldHistory.textContent);
+        console.log(`X MXRKS THE SP${x}T`);
+        textFieldHistory.textContent = x + num;
+    }
 }
 
 function clearTextField() {
