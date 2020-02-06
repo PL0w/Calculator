@@ -9,14 +9,21 @@ textField.textContent = 0;
 
 inputArea.addEventListener('click', (e) => {
     target = event.target;
-    let x = 0;
-    x = getNumbers(target);
+    let x;
+
+    if (target.matches('.number')){
+        x = getNumbers(target);
+        addNumbersToNumber(x);
+        convertNumber();
+        updateTextField();
+    }
+    doPlus(target);
+
     
     console.log(`X equals ${x}`);
-    addNumbersToNumber(x)
-    numberToTextField();
-    doPlus(target);
+
 })
+
 
 function getNumbers(targ){
     if (targ.matches('.number')){
@@ -36,9 +43,22 @@ function addNumbersToNumber(num){
     }
 }
 
+function convertNumber(){
+    number = Number(number);
+}
+
 function doPlus(targ){
     if (target.matches('.plus')){
         console.log('plus');
+        console.log(number);
+        if (number > 0)
+        {
+            console.log('do you reafh me?');
+            number2 += number;
+            number = 0;
+        }
+        clearTextField();
+        updateTextField();
     }
 }
 
@@ -60,7 +80,11 @@ function addTotal(num){
 }
 
 function updateTextField() {
-    textField.textContent = number;
+    if (number2 > 0){
+        textField.textContent = number2;
+    }else{
+        textField.textContent = number;
+    }
 }
 
 function clearTextField() {
