@@ -19,7 +19,7 @@ inputArea.addEventListener('click', (e) => {
         convertNumber();
         updateTextField();
     }
-    currentNumber = number;
+    // currentNumber = number;
     doPlus(target);
     doSubtract(target);
     doMultiply(target);
@@ -59,6 +59,9 @@ function textFieldUpdate(){
     updateTextField();
     updateTextFieldHistory(currentNumber);
 }
+function number2ToTextFieldHistory(){
+    textFieldHistory.textContent = number2;
+}
 
 
 function doPlus(targ){
@@ -71,7 +74,9 @@ function doPlus(targ){
             number2 += number;
             number = 0;
         }
-        textFieldUpdate();
+        clearTextField();
+        updateTextField();
+        updateTextFieldHistory(number2);
         currentOperation = 'addition';
     }
 }
@@ -120,16 +125,23 @@ function doEquals(targ){
             
             case 'addition':
                 console.log('switch');
-                currentNumber = number2 + number;
-                textFieldUpdate();
+                currentNumber += (number2 + number);
                 break;
 
         }
+        clearTextField();
+        updateTextFieldHistory(currentNumber);
+        clearNumbers();
     }
 }
 
 function addNumber(num){
     number += num;
+}
+
+function clearNumbers() {
+    number = 0;
+    number2 = 0;
 }
 
 function updateTextField() {
