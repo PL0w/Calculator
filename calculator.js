@@ -5,6 +5,7 @@ let number = 0;
 let number2 = 0;
 let currentNumber = 0;
 let sum;
+let currentOperation = '';
 
 // textField.textContent = 0;
 
@@ -23,6 +24,7 @@ inputArea.addEventListener('click', (e) => {
     doSubtract(target);
     doMultiply(target);
     doDivide(target);
+    doEquals(target);
 
     
     console.log(`X equals ${x}`);
@@ -70,6 +72,7 @@ function doPlus(targ){
             number = 0;
         }
         textFieldUpdate();
+        currentOperation = 'addition';
     }
 }
 
@@ -81,6 +84,7 @@ function doSubtract(targ){
         number2 -= number;
         number = 0;
         textFieldUpdate();
+        currentOperation = 'subtraction';
     }
 }
 
@@ -103,6 +107,24 @@ function doDivide(targ){
         number2 /= number;
         number = 0;
         textFieldUpdate();
+    }
+}
+
+function doEquals(targ){
+    if (target.matches('.equal')){
+        console.log('EQUALSSS');
+        //get number & number2
+        // add,sub,mult,div them based on identifier 
+        //update text field && or return, or jjust update txt field
+        switch(currentOperation) {
+            
+            case 'addition':
+                console.log('switch');
+                currentNumber = number2 + number;
+                textFieldUpdate();
+                break;
+
+        }
     }
 }
 
@@ -132,9 +154,12 @@ function updateTextFieldHistory(num){
     } else if(target.matches('.multiply')){
         let x = Number(textFieldHistory.textContent);
         textFieldHistory.textContent = x * num;
-    } else if(target.matches){
+    } else if(target.matches('.divide')){
         let x = Number(textFieldHistory.textContent);
         textFieldHistory.textContent = x / num;
+    }else if(target.matches('.equal')){
+        let x = Number(textFieldHistory.textContent);
+        textFieldHistory.textContent = currentNumber;
     }
 }
 
